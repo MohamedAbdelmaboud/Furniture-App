@@ -110,9 +110,6 @@ class _LoginViewState extends State<LoginView> {
                             setState(() {
                               isLoading = false;
                             });
-                            if (!context.mounted) return;
-                            Navigator.pushReplacementNamed(
-                                context, HomeView.id);
                           } else {
                             setState(() {
                               autovalidateMode = AutovalidateMode.always;

@@ -1,9 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/widgets/show_snack_bar.dart';
-
+import 'package:shop/views/home_view.dart';
 Future<UserCredential?> login(
     String? email, String? password, BuildContext context) async {
   try {
@@ -11,6 +10,7 @@ Future<UserCredential?> login(
     final UserCredential userCredential = await firebaseAuth
         .signInWithEmailAndPassword(email: email!, password: password!);
     showSnackBar(context, 'Login done successfully!', false);
+    Navigator.pushReplacementNamed(context, HomeView.id);
     return userCredential;
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
