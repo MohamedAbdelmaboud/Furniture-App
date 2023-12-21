@@ -1,6 +1,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsImagesAdd to CartAmico
+  /// assets/images/Add to Cart-amico.svg
+  static const String assetsImagesAddtoCartAmico = "assets/images/Add to Cart-amico.svg";
+
   /// Assets for assetsImagesArrowLongLeft
   /// assets/images/arrow-long-left.svg
   static const String assetsImagesArrowLongLeft = "assets/images/arrow-long-left.svg";
@@ -41,13 +45,17 @@ class Assets {
   /// assets/images/icons8-twitterx.svg
   static const String assetsImagesIcons8Twitterx = "assets/images/icons8-twitterx.svg";
 
+  /// Assets for assetsImagesMe
+  /// assets/images/me.jpg
+  static const String assetsImagesMe = "assets/images/me.jpg";
+
   /// Assets for assetsImagesMenu
   /// assets/images/menu.svg
   static const String assetsImagesMenu = "assets/images/menu.svg";
 
-  /// Assets for assetsImagesRipple
-  /// assets/images/ripple.gif
-  static const String assetsImagesRipple = "assets/images/ripple.gif";
+  /// Assets for assetsImagesSales
+  /// assets/images/Sales.svg
+  static const String assetsImagesSales = "assets/images/Sales.svg";
 
   /// Assets for assetsImagesScan
   /// assets/images/scan.svg
@@ -56,10 +64,6 @@ class Assets {
   /// Assets for assetsImagesSearch
   /// assets/images/search.svg
   static const String assetsImagesSearch = "assets/images/search.svg";
-
-  /// Assets for assetsImagesSpinner
-  /// assets/images/spinner.gif
-  static const String assetsImagesSpinner = "assets/images/spinner.gif";
 
   /// Assets for assetsImagesUser
   /// assets/images/user.svg

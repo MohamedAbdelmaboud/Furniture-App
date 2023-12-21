@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shop/constants/assets.dart';
 import 'package:shop/constants/constants.dart';
 import 'package:shop/cubits/categories_cubit/categories_cubit.dart';
@@ -21,7 +23,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    super.initState(); 
+    super.initState();
     BlocProvider.of<ProductsCubit>(context).fetch();
     BlocProvider.of<CategoriesCubit>(context).fetch();
   }
@@ -34,21 +36,16 @@ class _HomeViewState extends State<HomeView> {
         title: const CustomText('Furniture Store'),
         actions: <Widget>[
           SvgPicture.asset(
-            Assets.assetsImagesScan,
-            height: 20,
+            Assets.assetsImagesUser,
+            height: 30,
           ),
           const SizedBox(
             width: 15,
           ),
         ],
-        leading: InkWell(
-          onTap: () {
-           
-          },
-          child: const Icon(
-            Icons.menu_rounded,
-            color: kTextColor,
-          ),
+        leading: const Icon(
+          Icons.menu_rounded,
+          color: kTextColor,
         ),
       ),
       body: BlocBuilder<ProductsCubit, ProductsStates>(

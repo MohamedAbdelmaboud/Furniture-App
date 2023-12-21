@@ -7,12 +7,12 @@ class MyButton extends StatelessWidget {
   final String text;
   final bool isLoading;
   final void Function()? onPressed;
-
+  final Color? backgroundColor;
   const MyButton(
       {Key? key,
       required this.text,
       required this.onPressed,
-      this.isLoading = false})
+      this.isLoading = false, this.backgroundColor=kPrimaryColor})
       : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class MyButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            backgroundColor: kPrimaryColor,
+            backgroundColor: backgroundColor,
             elevation: 10,
             fixedSize: Size(MediaQuery.of(context).size.width, 40)),
         child: isLoading
@@ -33,6 +33,7 @@ class MyButton extends StatelessWidget {
               )
             : CustomText(
                 text,
+                fontSize: 18,
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
               ));

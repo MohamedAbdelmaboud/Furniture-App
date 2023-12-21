@@ -8,23 +8,26 @@ class CustomTextFromField extends StatefulWidget {
   CustomTextFromField(
       {super.key,
       this.suffixIcon,
-      required this.prefixIcon,
-      required this.hintText,
+      this.prefixIcon,
+      this.hintText,
       this.obscureText = false,
       this.controller,
       this.validator,
       this.keyboardType,
-      this.onChanged});
+      this.enabled = true,
+      this.onChanged, this.labelText});
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final IconData? suffixIcon;
+  final String? labelText;
   final void Function(String)? onChanged;
   bool? obscureText;
-  final String hintText;
+  final String? hintText;
   final double iconSize = 16;
   final Color iconColor = kPrimaryColor;
+  bool? enabled;
   @override
   State<CustomTextFromField> createState() => _CustomTextFromFieldState();
 }
@@ -35,6 +38,7 @@ class _CustomTextFromFieldState extends State<CustomTextFromField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        enabled: widget.enabled,
         onChanged: widget.onChanged,
         //inputFormatters: [],
         keyboardType: widget.keyboardType,
@@ -42,6 +46,7 @@ class _CustomTextFromFieldState extends State<CustomTextFromField> {
         validator: widget.validator,
         obscureText: widget.obscureText!,
         decoration: InputDecoration(
+          labelText: widget.labelText,
             prefixIcon: Icon(
               widget.prefixIcon,
               size: widget.iconSize,

@@ -9,6 +9,7 @@ import 'package:shop/my_boc_observer.dart';
 import 'package:shop/views/cart_view.dart';
 import 'package:shop/views/details_view.dart';
 import 'package:shop/views/home_view.dart';
+import 'package:shop/views/profile_view.dart';
 import 'package:shop/views/signUp_view.dart';
 
 import 'views/login_view.dart';
@@ -47,14 +48,15 @@ class MyApp extends StatelessWidget {
             appBarTheme:
                 const AppBarTheme(elevation: 0.0, color: Colors.transparent)),
         debugShowCheckedModeBanner: false,
-        initialRoute: LoginView.id,
+        initialRoute: ProfileView.id,
         routes: {
           DetailsView.id: (context) => const DetailsView(),
           HomeView.id: (context) => const HomeView(),
           SignUpView.id: (context) => const SignUpView(),
           LoginView.id: (context) => const LoginView(),
           OnboardingView.id: (context) => const OnboardingView(),
-          CartView.id: (context) => const CartView()
+          CartView.id: (context) => const CartView(),
+          ProfileView.id: (context) => const ProfileView()
         },
       ),
     );
