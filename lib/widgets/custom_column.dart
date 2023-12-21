@@ -9,12 +9,13 @@ class CustomColumn extends StatelessWidget {
 
   final IconData prefixIcon;
   final void Function(String)? onChanged;
+    final String? Function(String?)? validator;
   const CustomColumn(
       {super.key,
       required this.text,
       required this.hintText,
       required this.prefixIcon,
-      this.onChanged});
+      this.onChanged, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class CustomColumn extends StatelessWidget {
           prefixIcon: prefixIcon,
           hintText: hintText,
           onChanged: onChanged,
+          validator: validator,
         ),
       ],
     );

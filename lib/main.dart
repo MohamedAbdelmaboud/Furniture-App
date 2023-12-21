@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             appBarTheme:
                 const AppBarTheme(elevation: 0.0, color: Colors.transparent)),
         debugShowCheckedModeBanner: false,
-        initialRoute: HomeView.id,
+        initialRoute: LoginView.id,
         routes: {
           DetailsView.id: (context) => const DetailsView(),
           HomeView.id: (context) => const HomeView(),
