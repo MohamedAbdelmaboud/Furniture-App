@@ -24,6 +24,8 @@ class _SignUpViewState extends State<SignUpView> {
   String? userName;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final _formKey = GlobalKey<FormState>();
+
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,10 +116,17 @@ class _SignUpViewState extends State<SignUpView> {
                     suffixIcon: Icons.visibility,
                   ),
                   MyButton(
+                      isLoading: isLoading,
                       text: 'Sign up',
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            isLoading = true;
+                          });
                           await signUp(email, password, context);
+                          setState(() {
+                            isLoading = false;
+                          });
                         } else {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});

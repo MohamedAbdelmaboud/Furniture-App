@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/widgets/show_snack_bar.dart';
 
-Future<UserCredential?> signIn(
+Future<UserCredential?> login(
     String? email, String? password, BuildContext context) async {
   try {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;

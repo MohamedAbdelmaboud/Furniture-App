@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/helper/sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shop/helper/login.dart';
 import 'package:shop/views/home_view.dart';
 import 'package:shop/views/signUp_view.dart';
 import 'package:shop/widgets/custom_column.dart';
@@ -104,13 +106,13 @@ class _LoginViewState extends State<LoginView> {
                               isLoading = true;
                             });
                             formKey.currentState!.save();
-                            await signIn(email, password, context);
+                            await login(email, password, context);
                             setState(() {
                               isLoading = false;
                             });
-                            // if (!context.mounted) return;
-                            // Navigator.pushReplacementNamed(
-                            //     context, HomeView.id);
+                            if (!context.mounted) return;
+                            Navigator.pushReplacementNamed(
+                                context, HomeView.id);
                           } else {
                             setState(() {
                               autovalidateMode = AutovalidateMode.always;
@@ -126,7 +128,12 @@ class _LoginViewState extends State<LoginView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        svgPic(Assets.assetsImagesIcons8Google),
+                        GestureDetector(
+                          child: svgPic(Assets.assetsImagesIcons8Google),
+                          onTap: () async {
+                            await signInWithGoogle();
+                          },
+                        ),
                         const SizedBox(
                           width: 8,
                         ),
@@ -181,4 +188,22 @@ class _LoginViewState extends State<LoginView> {
       height: 35,
     );
   }
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }

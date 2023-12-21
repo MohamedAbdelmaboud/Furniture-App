@@ -4,7 +4,7 @@ import 'package:shop/widgets/custom_text.dart';
 void showSnackBar(BuildContext context, String text, bool isError) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 800),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 10,
       backgroundColor: isError ? Colors.red : Colors.green,
