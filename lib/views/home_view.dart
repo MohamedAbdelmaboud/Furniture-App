@@ -1,14 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shop/constants/assets.dart';
 import 'package:shop/constants/constants.dart';
 import 'package:shop/cubits/categories_cubit/categories_cubit.dart';
 import 'package:shop/cubits/products_cubit/products_cubit.dart';
 import 'package:shop/cubits/products_cubit/products_states.dart';
+import 'package:shop/views/profile_view.dart';
 import 'package:shop/widgets/custom_text.dart';
 import 'package:shop/widgets/home_body.dart';
 
@@ -35,9 +34,14 @@ class _HomeViewState extends State<HomeView> {
         centerTitle: true,
         title: const CustomText('Furniture Store'),
         actions: <Widget>[
-          SvgPicture.asset(
-            Assets.assetsImagesUser,
-            height: 30,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, ProfileView.id);
+            },
+            child: SvgPicture.asset(
+              Assets.assetsImagesUser,
+              height: 30,
+            ),
           ),
           const SizedBox(
             width: 15,

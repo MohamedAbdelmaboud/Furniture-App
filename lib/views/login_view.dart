@@ -109,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
                             });
                             formKey.currentState!.save();
                             await login(email, password, context);
-
+                            myEmail = email;
                             setState(() {
                               isLoading = false;
                             });
@@ -131,7 +131,7 @@ class _LoginViewState extends State<LoginView> {
                         GestureDetector(
                           child: svgPic(Assets.assetsImagesIcons8Google),
                           onTap: () async {
-                            await signInWithGoogle();
+                            myEmail = await signInWithGoogle();
                             if (!context.mounted) return;
                             Navigator.pushReplacementNamed(
                                 context, HomeView.id);
@@ -208,7 +208,9 @@ Future signInWithGoogle() async {
     accessToken: googleAuth.accessToken,
     idToken: googleAuth.idToken,
   );
-  log(googleUser.email);
   // Once signed in, return the UserCredential
   await FirebaseAuth.instance.signInWithCredential(credential);
+  return googleUser.email;
 }
+
+String? myEmail;

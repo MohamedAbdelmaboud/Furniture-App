@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -14,7 +16,7 @@ class ProfileView extends StatelessWidget {
   static String id = 'ProfileView';
   @override
   Widget build(BuildContext context) {
-    TextEditingController? controller = TextEditingController(text: 'dfs');
+    TextEditingController? controller = TextEditingController(text: myEmail);
     return Scaffold(
       body: Column(children: [
         Expanded(
@@ -57,13 +59,16 @@ class ProfileView extends StatelessWidget {
                   height: 10,
                 ),
                 CustomTextFromField(
+                  prefixIcon: Icons.email_outlined,
                   controller: controller,
                   enabled: false,
                   labelText: 'Email',
                 ),
-                MyButton(text: 'View Card', onPressed: () {
+                MyButton(
+                    text: 'View Card',
+                    onPressed: () {
                       Navigator.pushNamed(context, CartView.id);
-                }),
+                    }),
                 MyButton(
                     backgroundColor: Colors.red,
                     text: 'Log out',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shop/constants/assets.dart';
 import 'package:shop/views/login_view.dart';
 
 import '../constants/constants.dart';
@@ -26,29 +27,30 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<PageViewModel> pages = [
+  List<PageViewModel> pages = [
       PageViewModel(
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset('assets/images/Sales.svg'),
-        title: "Welcome to Marketi",
+        image: SvgPicture.asset(Assets.assetsImagesFurniture),
+        title: "Explore Elegant Furniture",
         body:
-            "Discover a world of endless possibilities and shop from the comfort of your fingertips Browse through a wide range of products, from fashion and electronics to home.",
+            "Transform your living space with our exquisite collection of furniture. Discover pieces that combine style and comfort to create the perfect ambiance for your home.",
       ),
       PageViewModel(
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset('assets/images/Sales.svg'),
-        title: "Welcome to Marketi",
+        image: SvgPicture.asset(Assets.assetsImagesWoodworker),
+        title: "Interior Design Made Easy",
         body:
-            "Discover a world of endless possibilities and shop from the comfort of your fingertips Browse through a wide range of products, from fashion and electronics to home.",
+            "Bring your vision to life with our curated selection of furniture. Whether you prefer modern minimalism or classic elegance, find pieces that match your style effortlessly.",
       ),
       PageViewModel(
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset('assets/images/Sales.svg'),
-        title: "Welcome to Marketi",
+        image: SvgPicture.asset(Assets.assetsImagesQuality),
+        title: "Quality Craftsmanship",
         body:
-            "Discover a world of endless possibilities and shop from the comfort of your fingertips Browse through a wide range of products, from fashion and electronics to home.",
+            "Experience the highest standards of craftsmanship with our handpicked furniture collection. Each piece is designed to not only enhance your space but also stand the test of time.",
       ),
     ];
+
     return IntroductionScreen(
       pages: pages,
       showDoneButton: true,
