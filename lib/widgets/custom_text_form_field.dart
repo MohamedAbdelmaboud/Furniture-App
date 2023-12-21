@@ -13,12 +13,14 @@ class CustomTextFromField extends StatefulWidget {
       this.obscureText = false,
       this.controller,
       this.validator,
-      this.keyboardType});
+      this.keyboardType,
+      this.onChanged});
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final IconData prefixIcon;
   final IconData? suffixIcon;
+  final void Function(String)? onChanged;
   bool? obscureText;
   final String hintText;
   final double iconSize = 16;
@@ -33,6 +35,7 @@ class _CustomTextFromFieldState extends State<CustomTextFromField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        onChanged: widget.onChanged,
         //inputFormatters: [],
         keyboardType: widget.keyboardType,
         controller: widget.controller,

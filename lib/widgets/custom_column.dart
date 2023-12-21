@@ -6,14 +6,15 @@ class CustomColumn extends StatelessWidget {
   final String text;
 
   final String hintText;
-  
- final IconData prefixIcon;
 
-  const CustomColumn({
-    super.key,
-    required this.text,
-    required this.hintText, required this.prefixIcon,
-  });
+  final IconData prefixIcon;
+  final void Function(String)? onChanged;
+  const CustomColumn(
+      {super.key,
+      required this.text,
+      required this.hintText,
+      required this.prefixIcon,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,10 @@ class CustomColumn extends StatelessWidget {
           ],
         ),
         CustomTextFromField(
-            prefixIcon: prefixIcon, hintText: hintText),
+          prefixIcon: prefixIcon,
+          hintText: hintText,
+          onChanged: onChanged,
+        ),
       ],
     );
   }
