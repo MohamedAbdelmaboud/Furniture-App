@@ -13,8 +13,9 @@ class OnboardingView extends StatelessWidget {
   static String id = 'OnboardingView';
   PageDecoration buildPageDecoration() {
     return PageDecoration(
+      bodyAlignment: Alignment.center,
       titleTextStyle: GoogleFonts.montserrat(
-        color: const Color(0xff001640),
+        color: kTextColor,
         fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
@@ -27,25 +28,22 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  List<PageViewModel> pages = [
+    List<PageViewModel> pages = [
       PageViewModel(
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset(Assets.assetsImagesFurniture),
-        title: "Explore Elegant Furniture",
+        titleWidget: SvgPicture.asset(Assets.assetsImagesFurniture),
         body:
             "Transform your living space with our exquisite collection of furniture. Discover pieces that combine style and comfort to create the perfect ambiance for your home.",
       ),
       PageViewModel(
+        titleWidget: SvgPicture.asset(Assets.assetsImagesWoodworker),
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset(Assets.assetsImagesWoodworker),
-        title: "Interior Design Made Easy",
         body:
             "Bring your vision to life with our curated selection of furniture. Whether you prefer modern minimalism or classic elegance, find pieces that match your style effortlessly.",
       ),
       PageViewModel(
         decoration: buildPageDecoration(),
-        image: SvgPicture.asset(Assets.assetsImagesQuality),
-        title: "Quality Craftsmanship",
+        titleWidget: SvgPicture.asset(Assets.assetsImagesQuality),
         body:
             "Experience the highest standards of craftsmanship with our handpicked furniture collection. Each piece is designed to not only enhance your space but also stand the test of time.",
       ),
@@ -59,7 +57,7 @@ class OnboardingView extends StatelessWidget {
       dotsDecorator: const DotsDecorator(
           spacing: EdgeInsets.all(8),
           activeSize: Size.square(15.0),
-          activeColor: Color(0xff001640),
+          activeColor: kPrimaryColor,
           size: Size.square(12),
           color: Color(0xffB2CCFF)),
       next: const OnboardingButton(text: "Next"),
@@ -75,9 +73,15 @@ class OnboardingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: kPrimaryColor),
-      child: CustomText(text,color: Colors.white,),
+      alignment: Alignment.center,
+      width: 70,
+      height: 35,
+      decoration:  BoxDecoration(color: kPrimaryColor,borderRadius: BorderRadius.circular(15)),
+      child: CustomText(
+        text,
+        color: Colors.white,
+        fontSize: 16,
+      ),
     );
   }
 }
