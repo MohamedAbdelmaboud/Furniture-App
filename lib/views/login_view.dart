@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -196,7 +194,7 @@ class _LoginViewState extends State<LoginView> {
 Future signInWithGoogle() async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser =
-      await GoogleSignIn().signIn().catchError((onError) => print(onError));
+      await GoogleSignIn().signIn();
   if (googleUser == null) {
     return;
   }

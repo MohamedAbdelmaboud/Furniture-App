@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -76,6 +74,7 @@ class ProfileView extends StatelessWidget {
                       await FirebaseAuth.instance.signOut();
                       GoogleSignIn googleSignIn = GoogleSignIn();
                       googleSignIn.signOut();
+                      if (!context.mounted) return;
                       Navigator.popAndPushNamed(context, LoginView.id);
                     })
               ],
