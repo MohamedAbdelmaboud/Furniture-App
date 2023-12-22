@@ -129,7 +129,11 @@ class _LoginViewState extends State<LoginView> {
                         GestureDetector(
                           child: svgPic(Assets.assetsImagesIcons8Google),
                           onTap: () async {
-                            myEmail = await signInWithGoogle();
+                            GoogleSignInAccount googleUser =
+                                await signInWithGoogle();
+                            myEmail = googleUser.email;
+                            path = googleUser.photoUrl;
+                            name = googleUser.displayName;
                             if (!context.mounted) return;
                             Navigator.pushReplacementNamed(
                                 context, HomeView.id);
@@ -191,15 +195,12 @@ class _LoginViewState extends State<LoginView> {
   }
 }
 
-Future signInWithGoogle() async {
+Future<GoogleSignInAccount> signInWithGoogle() async {
   // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser =
-      await GoogleSignIn().signIn();
-  if (googleUser == null) {
-    return;
-  }
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
   // Obtain the auth details from the request
-  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+  final GoogleSignInAuthentication googleAuth =
+      await googleUser!.authentication;
 
   // Create a new credential
   final credential = GoogleAuthProvider.credential(
@@ -208,7 +209,9 @@ Future signInWithGoogle() async {
   );
   // Once signed in, return the UserCredential
   await FirebaseAuth.instance.signInWithCredential(credential);
-  return googleUser.email;
+  return googleUser;
 }
 
 String? myEmail;
+String? path;
+String? name;

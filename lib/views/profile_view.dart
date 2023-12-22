@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shop/constants/assets.dart';
 import 'package:shop/constants/constants.dart';
 import 'package:shop/views/cart_view.dart';
 import 'package:shop/views/login_view.dart';
@@ -30,8 +29,8 @@ class ProfileView extends StatelessWidget {
                   left: MediaQuery.of(context).size.width * 0.25,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(99),
-                    child: Image.asset(
-                      Assets.assetsImagesMe,
+                    child: Image.network(
+                      path!,
                       height: 200,
                     ),
                   )),
@@ -48,8 +47,8 @@ class ProfileView extends StatelessWidget {
             child: Column(
               children: [
                 Container(decoration: const BoxDecoration(color: Colors.white)),
-                const CustomText(
-                  'Mohamed abdelmaboud',
+                CustomText(
+                  name!,
                   color: kTextColor,
                   fontSize: 16,
                 ),
