@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop/constants/assets.dart';
 import 'package:shop/helper/sign_up.dart';
+import 'package:shop/views/login_view.dart';
 import 'package:shop/widgets/custom_column.dart';
 import 'package:shop/widgets/custom_text.dart';
 import 'package:shop/widgets/custom_text_form_field.dart';
@@ -127,6 +128,7 @@ class _SignUpViewState extends State<SignUpView> {
                           setState(() {
                             isLoading = false;
                           });
+                        //  Navigator.pushNamed(context, LoginView.id);
                         } else {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});
