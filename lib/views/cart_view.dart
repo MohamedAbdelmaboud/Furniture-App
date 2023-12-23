@@ -19,7 +19,7 @@ class CartView extends StatelessWidget {
       body: BlocProvider.of<CartCubit>(context).cartProducts.isEmpty
           ? Center(
               child: SvgPicture.asset(
-              Assets.assetsImagesAddtoCartAmico,
+              Assets.assetsImagesAddCartAmico,
               height: 350,
             ))
           : const CartListView(),

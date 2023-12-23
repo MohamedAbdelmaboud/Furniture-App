@@ -3,7 +3,7 @@ class Assets {
   
   /// Assets for assetsImagesAdd to CartAmico
   /// assets/images/Add to Cart-amico.svg
-  static const String assetsImagesAddtoCartAmico = "assets/images/Add to Cart-amico.svg";
+  static const String assetsImagesAddCartAmico = "assets/images/Add to Cart-amico.svg";
 
   /// Assets for assetsImagesArrowLongLeft
   /// assets/images/arrow-long-left.svg

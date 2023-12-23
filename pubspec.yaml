@@ -63,7 +63,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter_assets:
-  assets_path: assets/
+  assets_path: assets/images/
   output_path: lib/constants/
   filename: assets.dart
 # For information on the generic Dart part of this file, see the
